@@ -24,3 +24,10 @@ plan.md
 
 # Keep scratch dir tracked via .gitkeep even if other contents are excluded later
 !.planning/scratch/.gitkeep
+
+# Artefatos de runtime do Multica — nascem não-rastreados a cada run do daemon;
+# ficam fora do versionamento para o pré-voo de working tree limpa nunca bloquear
+.multica/
+.agent_context/
+/CLAUDE.md
+.claude/skills/multica-*/
