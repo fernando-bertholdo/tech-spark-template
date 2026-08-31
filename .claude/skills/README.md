@@ -65,4 +65,9 @@ ninguém notar.
 | 2026-05-19 | — | — | (criação inicial — 8 skills) | Inicializa as skills do tech-spark-template |
 | 2026-08-31 | `90f715b` | SYNC-20260831-001 | `organize-commits/SKILL.md` | Corrige a referência ao arquivo de regras sempre-ativas, que apontava para uma seção "Commit Strategy" inexistente |
 | 2026-08-31 | `7327ef6` | SYNC-20260831-001 | `bootstrap-spark/SKILL.md` | Kickoff passa a preencher os dois pontos de entrada e a preservar a linha de linhagem em ambos |
-| 2026-08-31 | `0e4215a` | SYNC-20260831-001 | `README.md` | Registra as duas camadas e abre o changelog local |
+| 2026-08-31 | — | SYNC-20260831-001 | `README.md` | Registra as duas camadas e abre o changelog local |
+| 2026-08-31 | — | SYNC-20260831-001 | `README.md`, `bootstrap-spark/SKILL.md` | Troca a afirmação de que alterar uma camada reprova o gate pela cobertura real dele, e faz o kickoff reprovar por placeholder remanescente em vez de invocar o gate |
+
+> Linhas com `—` na coluna Commit registram mudanças cujo commit é o próprio que edita
+> esta tabela: o hash ainda não existe no momento da escrita. `git log -- <arquivo>`
+> resolve a procedência sem o registro circular.

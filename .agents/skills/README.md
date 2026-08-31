@@ -67,4 +67,10 @@ ninguém notar.
 | 2026-08-31 | `b6f6df7` | SYNC-20260831-001 | `agent-team/SKILL.md` | Espelha a skill descrevendo as capacidades de forma agnóstica de harness, sem nome de ferramenta nem atalho de teclado |
 | 2026-08-31 | `90f715b` | SYNC-20260831-001 | `organize-commits/SKILL.md` | Espelha a skill apontando para `.agents/README.md` como arquivo de regras sempre-ativas |
 | 2026-08-31 | `7327ef6` | SYNC-20260831-001 | `bootstrap-spark/SKILL.md` | Espelha o kickoff, que passa a preencher os dois pontos de entrada |
-| 2026-08-31 | `0e4215a` | SYNC-20260831-001 | `README.md` | Cria o índice da camada e registra as duas camadas |
+| 2026-08-31 | `0e4215a` | SYNC-20260831-001 | `README.md` | Cria o índice da camada |
+| 2026-08-31 | — | SYNC-20260831-001 | `README.md` | Registra as duas camadas e abre o changelog local |
+| 2026-08-31 | — | SYNC-20260831-001 | `README.md`, `bootstrap-spark/SKILL.md` | Troca a afirmação de que alterar uma camada reprova o gate pela cobertura real dele, e faz o kickoff reprovar por placeholder remanescente em vez de invocar o gate |
+
+> Linhas com `—` na coluna Commit registram mudanças cujo commit é o próprio que edita
+> esta tabela: o hash ainda não existe no momento da escrita. `git log -- <arquivo>`
+> resolve a procedência sem o registro circular.
