@@ -32,3 +32,32 @@
 - `SKILL.md` obrigatório (uppercase)
 - Frontmatter: `name`, `description`
 - Body conciso (≤300 linhas idealmente)
+
+---
+
+## Duas camadas de instrução
+
+Desde 2026-08-31 este template mantém `.claude/` e `.agents/` **pareados**: as 8
+skills, as 2 rules e o índice de cada diretório existem nas duas camadas, para os
+harnesses que leem `.agents/` em vez de `.claude/`. O ponto de entrada é o par
+`.claude/CLAUDE.md` ↔ `.agents/README.md` — mesmo papel, nomes que cada harness impõe.
+
+O pareamento é um invariante, não um instantâneo: `scripts/validate/check-pareamento-instrucoes.sh`
+roda em CI e falha se um homônimo divergir sem declaração, se um arquivo existir só
+numa camada sem declaração, ou se uma declaração ficar obsoleta. Divergência legítima
+vive em `scripts/validate/pareamento-instrucoes-excecoes.txt`, sempre com motivo.
+
+**Consequência prática ao editar:** as duas camadas mudam no mesmo commit. Alterar só
+uma quebra o gate — e é exatamente esse gate que impede aqui o drift que se acumulou no
+`tech-product-template`, onde 19 pares divergiram em seis meses sem ninguém notar.
+
+## Changelog Local
+
+| Data | Commit | Sync-ID | Arquivo | Descrição |
+|------|--------|---------|---------|-----------|
+| 2026-05-19 | — | — | (criação inicial — 8 skills) | Inicializa as skills do tech-spark-template |
+| 2026-08-31 | `5f5b281`, `6075bd9`, `c1f5a7e`, `7c6ca27`, `5d1c16a` | SYNC-20260831-001 | `fresh-context/`, `generate-session-prompt/`, `pre-commit-check/`, `update-projeto/`, `validate-testing/` | Espelha do `.claude/` as 5 skills que não referenciam mecanismo de harness — cópias byte a byte |
+| 2026-08-31 | `b6f6df7` | SYNC-20260831-001 | `agent-team/SKILL.md` | Espelha a skill descrevendo as capacidades de forma agnóstica de harness, sem nome de ferramenta nem atalho de teclado |
+| 2026-08-31 | `90f715b` | SYNC-20260831-001 | `organize-commits/SKILL.md` | Espelha a skill apontando para `.agents/README.md` como arquivo de regras sempre-ativas |
+| 2026-08-31 | `7327ef6` | SYNC-20260831-001 | `bootstrap-spark/SKILL.md` | Espelha o kickoff, que passa a preencher os dois pontos de entrada |
+| 2026-08-31 | `0e4215a` | SYNC-20260831-001 | `README.md` | Cria o índice da camada e registra as duas camadas |

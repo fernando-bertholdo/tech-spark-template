@@ -32,3 +32,30 @@
 - `SKILL.md` obrigatório (uppercase)
 - Frontmatter: `name`, `description`
 - Body conciso (≤300 linhas idealmente)
+
+---
+
+## Duas camadas de instrução
+
+Desde 2026-08-31 este template mantém `.claude/` e `.agents/` **pareados**: as 8
+skills, as 2 rules e o índice de cada diretório existem nas duas camadas, para os
+harnesses que leem `.agents/` em vez de `.claude/`. O ponto de entrada é o par
+`.claude/CLAUDE.md` ↔ `.agents/README.md` — mesmo papel, nomes que cada harness impõe.
+
+O pareamento é um invariante, não um instantâneo: `scripts/validate/check-pareamento-instrucoes.sh`
+roda em CI e falha se um homônimo divergir sem declaração, se um arquivo existir só
+numa camada sem declaração, ou se uma declaração ficar obsoleta. Divergência legítima
+vive em `scripts/validate/pareamento-instrucoes-excecoes.txt`, sempre com motivo.
+
+**Consequência prática ao editar:** as duas camadas mudam no mesmo commit. Alterar só
+uma quebra o gate — e é exatamente esse gate que impede aqui o drift que se acumulou no
+`tech-product-template`, onde 19 pares divergiram em seis meses sem ninguém notar.
+
+## Changelog Local
+
+| Data | Commit | Sync-ID | Arquivo | Descrição |
+|------|--------|---------|---------|-----------|
+| 2026-05-19 | — | — | (criação inicial — 8 skills) | Inicializa as skills do tech-spark-template |
+| 2026-08-31 | `90f715b` | SYNC-20260831-001 | `organize-commits/SKILL.md` | Corrige a referência ao arquivo de regras sempre-ativas, que apontava para uma seção "Commit Strategy" inexistente |
+| 2026-08-31 | `7327ef6` | SYNC-20260831-001 | `bootstrap-spark/SKILL.md` | Kickoff passa a preencher os dois pontos de entrada e a preservar a linha de linhagem em ambos |
+| 2026-08-31 | `0e4215a` | SYNC-20260831-001 | `README.md` | Registra as duas camadas e abre o changelog local |
