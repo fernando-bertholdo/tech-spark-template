@@ -183,7 +183,7 @@ Ao final, os 4 arquivos abaixo ficam **sem placeholders**:
 - `.agents/README.md` — os mesmos valores, na camada `.agents/`
 
 **Detalhes:**
-- **Os dois pontos de entrada são preenchidos com os mesmos valores.** `.claude/CLAUDE.md` e `.agents/README.md` são um par: preencher só um deixa a outra camada com `{{PROJECT_NAME}}` literal e quebra o gate de pareamento
+- **Os dois pontos de entrada são preenchidos com os mesmos valores.** `.claude/CLAUDE.md` e `.agents/README.md` são um par declarado `solo` dos dois lados, então o gate de pareamento não os compara: preencher só um deixa a outra camada com `{{PROJECT_NAME}}` literal sem que nada reclame. Quem pega isso é a verificação final da etapa 8
 - **A linha que declara o template de origem fica nos dois.** É a terceira linha de cada ponto de entrada — `(baseado em \`tech-spark-template\`)` — e é o que registra a linhagem do projeto derivado. Substituir `{{PROJECT_NAME}}` em volta dela, nunca removê-la
 - Seção **"Como rodar" em `Projeto.md` fica vazia** para o usuário completar conforme implementa o projeto
 - **Changelog em `Projeto.md`** mantém apenas a linha do template (`[YYYY-MM-DD] Bootstrap inicial do projeto.`); próxima entrada virá com commit subsequente, não no bootstrap
@@ -227,9 +227,12 @@ Ao final, os 4 arquivos abaixo ficam **sem placeholders**:
    - README.md
    - .claude/CLAUDE.md
    - .agents/README.md (mesmos valores; manter a linha de linhagem)
-8. Verificação final:
+8. Verificação final (bloqueante):
    - `grep -lE '\{\{[A-Z_]+\}\}' Projeto.md README.md .claude/CLAUDE.md .agents/README.md`
-   - Se algo restar → reportar como bug
+   - Se o comando listar qualquer um dos 4 arquivos → declarar FALHA, nomeando
+     os arquivos, e NÃO concluir o kickoff
+   - Essa checagem não é delegável ao gate de pareamento: os dois pontos de
+     entrada são `solo` e ficam fora da comparação
 9. Reportar:
    - Arquivos modificados
    - Valores aplicados

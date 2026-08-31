@@ -47,9 +47,16 @@ roda em CI e falha se um homônimo divergir sem declaração, se um arquivo exis
 numa camada sem declaração, ou se uma declaração ficar obsoleta. Divergência legítima
 vive em `scripts/validate/pareamento-instrucoes-excecoes.txt`, sempre com motivo.
 
-**Consequência prática ao editar:** as duas camadas mudam no mesmo commit. Alterar só
-uma quebra o gate — e é exatamente esse gate que impede aqui o drift que se acumulou no
-`tech-product-template`, onde 19 pares divergiram em seis meses sem ninguém notar.
+**Consequência prática ao editar:** as duas camadas mudam no mesmo commit — essa é a
+disciplina, e o gate cobre só parte dela. O que ele barra é homônimo divergente **não
+declarado** e arquivo solo **não declarado**; par já declarado `divergencia` e os dois
+pontos de entrada, declarados `solo`, ficam fora da comparação byte a byte — hoje 8 dos
+13 pares. Nesses 8, alterar uma camada e esquecer a outra passa em silêncio, e é a lista
+versionada em `scripts/validate/pareamento-instrucoes-excecoes.txt` que torna essa cegueira
+auditável: uma linha por exceção, sempre com motivo, e exceção obsoleta reprovando igual a
+drift. Nos outros 5 pares a comparação é byte a byte — e é dela que vem o freio ao drift
+que se acumulou no `tech-product-template`, onde 19 pares divergiram em seis meses sem
+ninguém notar.
 
 ## Changelog Local
 
