@@ -1,4 +1,4 @@
-# Agent Skills — tech-spark-template
+# Agent Skills — tech-spark-template (camada .agents/)
 
 8 skills para projetos lite. Origem: tech-product-template (5 portadas com ajustes) + 2 novas + 1 adaptada.
 
@@ -12,7 +12,7 @@
 | [generate-session-prompt](generate-session-prompt/SKILL.md) | portada do full | só modo genérico | Retomar trabalho após pausa |
 | [validate-testing](validate-testing/SKILL.md) | portada do full | opt-in/light | Sugerir cobertura de testes |
 | [update-projeto](update-projeto/SKILL.md) | nova | substitui update-docs | Atualizar Projeto.md (decisões + changelog) |
-| [agent-team](agent-team/SKILL.md) | adaptada do full | sem refs Roadmap/TODO | Orquestrar múltiplos agentes Claude Code |
+| [agent-team](agent-team/SKILL.md) | adaptada do full | sem refs Roadmap/TODO | Orquestrar múltiplos agentes |
 | [bootstrap-spark](bootstrap-spark/SKILL.md) | nova | 3 modos + idempotência | Kickoff guiado de projeto novo |
 
 ## Diferenças vs tech-product-template
@@ -63,8 +63,11 @@ ninguém notar.
 | Data | Commit | Sync-ID | Arquivo | Descrição |
 |------|--------|---------|---------|-----------|
 | 2026-05-19 | — | — | (criação inicial — 8 skills) | Inicializa as skills do tech-spark-template |
-| 2026-08-31 | `90f715b` | SYNC-20260831-001 | `organize-commits/SKILL.md` | Corrige a referência ao arquivo de regras sempre-ativas, que apontava para uma seção "Commit Strategy" inexistente |
-| 2026-08-31 | `7327ef6` | SYNC-20260831-001 | `bootstrap-spark/SKILL.md` | Kickoff passa a preencher os dois pontos de entrada e a preservar a linha de linhagem em ambos |
+| 2026-08-31 | `5f5b281`, `6075bd9`, `c1f5a7e`, `7c6ca27`, `5d1c16a` | SYNC-20260831-001 | `fresh-context/`, `generate-session-prompt/`, `pre-commit-check/`, `update-projeto/`, `validate-testing/` | Espelha do `.claude/` as 5 skills cujo corpo é agnóstico de harness — cópias byte a byte. A linha de procedência de `generate-session-prompt/` cita um caminho `.claude/` do `tech-product-template`: é registro de origem, não mecanismo de harness, e reescrevê-la só nesta camada abriria divergência num par hoje idêntico |
+| 2026-08-31 | `b6f6df7` | SYNC-20260831-001 | `agent-team/SKILL.md` | Espelha a skill descrevendo as capacidades de forma agnóstica de harness, sem nome de ferramenta nem atalho de teclado |
+| 2026-08-31 | `90f715b` | SYNC-20260831-001 | `organize-commits/SKILL.md` | Espelha a skill apontando para `.agents/README.md` como arquivo de regras sempre-ativas |
+| 2026-08-31 | `7327ef6` | SYNC-20260831-001 | `bootstrap-spark/SKILL.md` | Espelha o kickoff, que passa a preencher os dois pontos de entrada |
+| 2026-08-31 | `0e4215a` | SYNC-20260831-001 | `README.md` | Cria o índice da camada |
 | 2026-08-31 | — | SYNC-20260831-001 | `README.md` | Registra as duas camadas e abre o changelog local |
 | 2026-08-31 | — | SYNC-20260831-001 | `README.md`, `bootstrap-spark/SKILL.md` | Troca a afirmação de que alterar uma camada reprova o gate pela cobertura real dele, e faz o kickoff reprovar por placeholder remanescente em vez de invocar o gate |
 | 2026-08-31 | — | SYNC-20260831-001 | `pre-commit-check/SKILL.md` | Acrescenta o gate de pareamento ao procedimento, aos bloqueadores e à checklist — antes o pareamento só reprovava depois do push, no CI |

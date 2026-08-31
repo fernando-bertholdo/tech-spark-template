@@ -233,5 +233,5 @@ git commit --amend -m "msg"     # corrigir mensagem do último commit
 
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Semantic Versioning](https://semver.org/)
-- `.claude/CLAUDE.md` — Seção "6. Commits"
+- `.agents/README.md` — Seção "6. Commits"
 - `Projeto.md` — Changelog do projeto

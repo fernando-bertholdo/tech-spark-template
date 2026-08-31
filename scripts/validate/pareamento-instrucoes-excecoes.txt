@@ -1,0 +1,40 @@
+# Exceções de pareamento entre .claude/ e .agents/
+#
+# Lido por scripts/validate/check-pareamento-instrucoes.sh. Formato:
+#
+#   tipo | caminho | motivo
+#
+#   solo        — arquivo que existe numa família e legitimamente não na outra.
+#                 Caminho COM o prefixo da família (é sobre um arquivo).
+#   divergencia — homônimo que diverge por design e vai continuar divergindo.
+#                 Caminho RELATIVO à família (é sobre o par).
+#   drift       — homônimo que diverge por acidente e vai ser reconciliado.
+#                 Caminho relativo, motivo nomeando quem zera.
+#
+# Exceção obsoleta falha o gate igual a drift não declarado (DL-1): remova a
+# linha no mesmo commit que reconcilia o par ou apaga o arquivo.
+#
+# Motivo genérico ("exclusivo", "difere") não vale — o motivo é o que torna a
+# exceção auditável.
+
+# ===========================================================================
+# solo — ponto de entrada de cada camada
+# ===========================================================================
+# Mesmo papel, nomes que cada harness impõe. A dupla é um par, não duas ausências.
+solo | .claude/CLAUDE.md | ponto de entrada da camada Claude Code; corresponde a .agents/README.md, que cumpre o mesmo papel sob o nome exigido pelo formato agents
+solo | .agents/README.md | ponto de entrada da camada agents; corresponde a .claude/CLAUDE.md, que cumpre o mesmo papel sob o nome exigido pelo Claude Code
+
+# ===========================================================================
+# divergencia — rules/
+# ===========================================================================
+divergencia | rules/README.md | índice de cada camada, divergente por construção: o de .claude/ descreve regras path-targeted, carregadas pelo harness conforme o path editado, e o de .agents/ declara escopo de arquivos para consulta do agente, porque o formato agents não tem carregamento condicional. O corpo com as diferenças vs tech-product-template é idêntico, e cada índice carrega o changelog local do próprio subdiretório.
+divergencia | rules/code-quality.md | frontmatter de mecanismo: só .claude/ declara paths: (path-targeting do Claude Code, carrega a rule ao editar src/ e *.py). O corpo é idêntico.
+divergencia | rules/security.md | frontmatter de mecanismo: só .claude/ declara paths: (path-targeting do Claude Code, carrega a rule ao editar src/ e .env*). O corpo é idêntico. A camada .agents/ não recebe trigger sempre-ativo no lugar: o índice dela declara que a consulta é do agente, e um carregamento incondicional contradiria isso.
+
+# ===========================================================================
+# divergencia — skills/
+# ===========================================================================
+divergencia | skills/README.md | índice e changelog local de cada camada, divergente por construção: o título nomeia a camada, a linha de agent-team só cita o Claude Code no índice dele, e o Changelog Local registra os commits e Sync-IDs do próprio subdiretório, que nunca coincidem entre camadas. O catálogo das 8 skills e as diferenças vs tech-product-template são idênticos.
+divergencia | skills/agent-team/SKILL.md | o diff é nome de ferramenta e atalho de teclado: .claude/ cita o Claude Code, o delegate mode no Shift+Tab, o Task tool e os atalhos Ctrl+T e Escape; .agents/ descreve as mesmas capacidades de forma agnóstica de harness. Níveis de equipe, workflow, spawn prompt e tabela de monitoramento são idênticos, e nenhum conteúdo se perde de um lado nem do outro.
+divergencia | skills/bootstrap-spark/SKILL.md | dois links relativos para os pontos de entrada, que cada camada resolve a partir da própria árvore (.claude/ alcança CLAUDE.md em ../../ e .agents/README.md em ../../../; a camada .agents/ faz o inverso). O corpo é idêntico, inclusive a instrução de preencher os dois pontos de entrada com os mesmos valores.
+divergencia | skills/organize-commits/SKILL.md | uma referência de mecanismo na seção Referências, cada camada apontando para o próprio arquivo de regras sempre-ativas (.claude/CLAUDE.md e .agents/README.md). O corpo é idêntico.

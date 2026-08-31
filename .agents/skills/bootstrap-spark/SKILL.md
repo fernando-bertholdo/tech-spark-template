@@ -313,8 +313,8 @@ bootstrap-spark --resume
 - [KICKOFF_GUIDE.md](../../../KICKOFF_GUIDE.md) — caminho manual equivalente
 - [Projeto.md](../../../Projeto.md) — destino principal de captura
 - [README.md](../../../README.md) — destino secundário (apresentação)
-- [.claude/CLAUDE.md](../../CLAUDE.md) — destino terciário (regras operacionais, camada Claude Code)
-- [.agents/README.md](../../../.agents/README.md) — destino quaternário (as mesmas regras, camada agents)
+- [.claude/CLAUDE.md](../../../.claude/CLAUDE.md) — destino terciário (regras operacionais, camada Claude Code)
+- [.agents/README.md](../../README.md) — destino quaternário (as mesmas regras, camada agents)
 - [skills/fresh-context/SKILL.md](../fresh-context/SKILL.md) — handoff entre sessões (uso posterior ao bootstrap)
 
 ---
