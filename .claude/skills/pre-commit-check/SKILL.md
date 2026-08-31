@@ -134,6 +134,10 @@ test(parser): cobre caso de input vazio
      sem condição de caminho — se FAIL, BLOQUEAR. Leva ~3s e não depende de stack,
      e editar só `scripts/validate/pareamento-instrucoes-excecoes.txt` reprova o
      gate sem tocar camada nenhuma
+   - O gate inventaria pelo índice, mas compara o conteúdo da **árvore de trabalho**:
+     com mudança parcialmente staged ele valida algo diferente do que vai no commit.
+     Se sobrou edição não staged em `.claude/`, `.agents/` ou nas exceções, o verde
+     dele não fala do commit — resolva o stage parcial antes de confiar no resultado
 
 5. Mensagem
    - Validar formato conventional commit em pt-BR

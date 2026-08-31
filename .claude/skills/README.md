@@ -71,6 +71,7 @@ seis meses sem ninguém notar.
 | 2026-08-31 | — | SYNC-20260831-001 | `pre-commit-check/SKILL.md` | Acrescenta o gate de pareamento ao procedimento, aos bloqueadores e à checklist — antes o pareamento só reprovava depois do push, no CI |
 | 2026-08-31 | — | SYNC-20260831-001 | `pre-commit-check/SKILL.md` | Tira a condição de caminho do gate de pareamento: ele passa a rodar em todo commit, porque editar só o arquivo de exceções reprova o gate sem tocar `.claude/` nem `.agents/` |
 | 2026-08-31 | — | SYNC-20260831-001 | `README.md` | Troca a contagem fixa de pares dentro e fora da comparação byte a byte por descrição qualitativa: o número decaía em silêncio a cada exceção adicionada ou removida, sem gate que o validasse |
+| 2026-08-31 | — | SYNC-20260831-001 | `pre-commit-check/SKILL.md` | Anota que o gate compara a árvore de trabalho, não o índice: com stage parcial ele valida algo diferente do que vai no commit |
 
 > Linhas com `—` na coluna Commit registram mudanças cujo commit é o próprio que edita
 > esta tabela: o hash ainda não existe no momento da escrita. `git log -- <arquivo>`
