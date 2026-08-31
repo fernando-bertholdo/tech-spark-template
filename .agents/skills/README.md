@@ -49,14 +49,15 @@ vive em `scripts/validate/pareamento-instrucoes-excecoes.txt`, sempre com motivo
 
 **Consequência prática ao editar:** as duas camadas mudam no mesmo commit — essa é a
 disciplina, e o gate cobre só parte dela. O que ele barra é homônimo divergente **não
-declarado** e arquivo solo **não declarado**; par já declarado `divergencia` e os dois
-pontos de entrada, declarados `solo`, ficam fora da comparação byte a byte — hoje 8 dos
-13 pares. Nesses 8, alterar uma camada e esquecer a outra passa em silêncio, e é a lista
-versionada em `scripts/validate/pareamento-instrucoes-excecoes.txt` que torna essa cegueira
-auditável: uma linha por exceção, sempre com motivo, e exceção obsoleta reprovando igual a
-drift. Nos outros 5 pares a comparação é byte a byte — e é dela que vem o freio ao drift
-que se acumulou no `tech-product-template`, onde 19 pares divergiram em seis meses sem
-ninguém notar.
+declarado** e arquivo solo **não declarado**; todo par já declarado `divergencia` e os
+dois pontos de entrada, declarados `solo`, ficam fora da comparação byte a byte. Neles,
+alterar uma camada e esquecer a outra passa em silêncio, e é a lista versionada em
+`scripts/validate/pareamento-instrucoes-excecoes.txt` que torna essa cegueira auditável:
+uma linha por exceção, sempre com motivo, e exceção obsoleta reprovando igual a drift.
+Quantos pares estão nessa condição, a lista diz — e o gate imprime o total de exceções em
+uso a cada execução. Nos pares restantes a comparação é byte a byte — e é dela que vem o
+freio ao drift que se acumulou no `tech-product-template`, onde 19 pares divergiram em
+seis meses sem ninguém notar.
 
 ## Changelog Local
 
@@ -72,6 +73,7 @@ ninguém notar.
 | 2026-08-31 | — | SYNC-20260831-001 | `README.md`, `bootstrap-spark/SKILL.md` | Troca a afirmação de que alterar uma camada reprova o gate pela cobertura real dele, e faz o kickoff reprovar por placeholder remanescente em vez de invocar o gate |
 | 2026-08-31 | — | SYNC-20260831-001 | `pre-commit-check/SKILL.md` | Acrescenta o gate de pareamento ao procedimento, aos bloqueadores e à checklist — antes o pareamento só reprovava depois do push, no CI |
 | 2026-08-31 | — | SYNC-20260831-001 | `pre-commit-check/SKILL.md` | Tira a condição de caminho do gate de pareamento: ele passa a rodar em todo commit, porque editar só o arquivo de exceções reprova o gate sem tocar `.claude/` nem `.agents/` |
+| 2026-08-31 | — | SYNC-20260831-001 | `README.md` | Troca a contagem fixa de pares dentro e fora da comparação byte a byte por descrição qualitativa: o número decaía em silêncio a cada exceção adicionada ou removida, sem gate que o validasse |
 
 > Linhas com `—` na coluna Commit registram mudanças cujo commit é o próprio que edita
 > esta tabela: o hash ainda não existe no momento da escrita. `git log -- <arquivo>`
