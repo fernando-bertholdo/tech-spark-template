@@ -130,6 +130,8 @@ test(parser): cobre caso de input vazio
 4. Git Status
    - Revisar `git diff --cached`
    - Confirmar arquivos corretos
+   - Se o commit toca `.claude/` ou `.agents/`: rodar
+     `bash scripts/validate/check-pareamento-instrucoes.sh` — se FAIL, BLOQUEAR
 
 5. Mensagem
    - Validar formato conventional commit em pt-BR
@@ -159,6 +161,7 @@ READY TO COMMIT
 - Secrets hardcoded encontrados
 - `.env` ou credenciais staged
 - Testes existentes falhando
+- Gate de pareamento reprovando num commit que toca `.claude/` ou `.agents/`
 
 ## Avisos (revisar, não bloqueia)
 
@@ -175,6 +178,7 @@ READY TO COMMIT
 - [ ] `.env` não staged
 - [ ] Testes passam (ou inexistentes)
 - [ ] Arquivos staged conferem
+- [ ] Pareamento `.claude/` × `.agents/` íntegro, se o commit toca essas camadas (`bash scripts/validate/check-pareamento-instrucoes.sh`)
 - [ ] Mensagem em formato conventional (pt-BR)
 
 ## Referências

@@ -70,6 +70,7 @@ ninguém notar.
 | 2026-08-31 | `0e4215a` | SYNC-20260831-001 | `README.md` | Cria o índice da camada |
 | 2026-08-31 | — | SYNC-20260831-001 | `README.md` | Registra as duas camadas e abre o changelog local |
 | 2026-08-31 | — | SYNC-20260831-001 | `README.md`, `bootstrap-spark/SKILL.md` | Troca a afirmação de que alterar uma camada reprova o gate pela cobertura real dele, e faz o kickoff reprovar por placeholder remanescente em vez de invocar o gate |
+| 2026-08-31 | — | SYNC-20260831-001 | `pre-commit-check/SKILL.md` | Acrescenta o gate de pareamento ao procedimento, aos bloqueadores e à checklist — antes o pareamento só reprovava depois do push, no CI |
 
 > Linhas com `—` na coluna Commit registram mudanças cujo commit é o próprio que edita
 > esta tabela: o hash ainda não existe no momento da escrita. `git log -- <arquivo>`
