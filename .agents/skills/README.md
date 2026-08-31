@@ -63,7 +63,7 @@ ninguém notar.
 | Data | Commit | Sync-ID | Arquivo | Descrição |
 |------|--------|---------|---------|-----------|
 | 2026-05-19 | — | — | (criação inicial — 8 skills) | Inicializa as skills do tech-spark-template |
-| 2026-08-31 | `5f5b281`, `6075bd9`, `c1f5a7e`, `7c6ca27`, `5d1c16a` | SYNC-20260831-001 | `fresh-context/`, `generate-session-prompt/`, `pre-commit-check/`, `update-projeto/`, `validate-testing/` | Espelha do `.claude/` as 5 skills que não referenciam mecanismo de harness — cópias byte a byte |
+| 2026-08-31 | `5f5b281`, `6075bd9`, `c1f5a7e`, `7c6ca27`, `5d1c16a` | SYNC-20260831-001 | `fresh-context/`, `generate-session-prompt/`, `pre-commit-check/`, `update-projeto/`, `validate-testing/` | Espelha do `.claude/` as 5 skills cujo corpo é agnóstico de harness — cópias byte a byte. A linha de procedência de `generate-session-prompt/` cita um caminho `.claude/` do `tech-product-template`: é registro de origem, não mecanismo de harness, e reescrevê-la só nesta camada abriria divergência num par hoje idêntico |
 | 2026-08-31 | `b6f6df7` | SYNC-20260831-001 | `agent-team/SKILL.md` | Espelha a skill descrevendo as capacidades de forma agnóstica de harness, sem nome de ferramenta nem atalho de teclado |
 | 2026-08-31 | `90f715b` | SYNC-20260831-001 | `organize-commits/SKILL.md` | Espelha a skill apontando para `.agents/README.md` como arquivo de regras sempre-ativas |
 | 2026-08-31 | `7327ef6` | SYNC-20260831-001 | `bootstrap-spark/SKILL.md` | Espelha o kickoff, que passa a preencher os dois pontos de entrada |
