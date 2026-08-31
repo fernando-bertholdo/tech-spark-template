@@ -17,6 +17,9 @@ jobs:
           ! grep -rnE --exclude-dir=.git '^(<{7} |>{7} )' .
           ! git ls-files | grep -E '^\.multica/'
 
+      - name: Pareamento .agents/ × .claude/
+        run: bash scripts/validate/check-pareamento-instrucoes.sh
+
       # Os passos abaixo só rodam quando o stack correspondente existir no repo
       - uses: actions/setup-python@v5
         if: ${{ hashFiles('pyproject.toml', 'requirements.txt') != '' }}
