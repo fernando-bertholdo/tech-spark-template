@@ -172,4 +172,4 @@ Lista final consolidada de tarefas referenciando as seções acima.
 - Inferência automática de nível quando não especificado
 
 **Origem:** Adaptado de `tech-product-template/.claude/skills/generate-session-prompt/SKILL.md` (v4.0.0),
-descartando o modo opinionated (que pressupõe `.planning/milestones/`, Roadmap.md, TODO.md, init-milestone, validate-dor, validate-dod).
+descartando o modo opinionated (que pressupõe `.planning/milestones/`, Roadmap.md, init-milestone, validate-dor, validate-dod).

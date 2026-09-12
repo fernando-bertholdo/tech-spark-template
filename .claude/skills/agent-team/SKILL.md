@@ -112,7 +112,7 @@ Implementer B → src/module_a/file_a.ext  ← CONFLITO
 
 ## Diferenças vs `tech-product-template`
 
-- Sem refs a `Roadmap.md`, `TODO.md` ou `documents/core/` (não existem aqui)
+- Sem refs a `Roadmap.md` ou `documents/core/` (não existem aqui)
 - "Milestone scope" substituído por **`plan.md` ou seção em `Projeto.md`**
 - Restrições referenciam `Projeto.md` na raiz do projeto
 - Sem `init-milestone`, `validate-dor`, `validate-dod` no pipeline

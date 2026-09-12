@@ -72,6 +72,7 @@ seis meses sem ninguém notar.
 | 2026-08-31 | — | SYNC-20260831-001 | `pre-commit-check/SKILL.md` | Tira a condição de caminho do gate de pareamento: ele passa a rodar em todo commit, porque editar só o arquivo de exceções reprova o gate sem tocar `.claude/` nem `.agents/` |
 | 2026-08-31 | — | SYNC-20260831-001 | `README.md` | Troca a contagem fixa de pares dentro e fora da comparação byte a byte por descrição qualitativa: o número decaía em silêncio a cada exceção adicionada ou removida, sem gate que o validasse |
 | 2026-08-31 | — | SYNC-20260831-001 | `pre-commit-check/SKILL.md` | Anota que o gate compara a árvore de trabalho, não o índice: com stage parcial ele valida algo diferente do que vai no commit |
+| 2026-09-12 | — | SYNC-20260912-001 | `generate-session-prompt/SKILL.md`, `agent-team/SKILL.md` | Saem as duas citações órfãs ao arquivo de tarefas granulares que a origem aposentou e que este template nunca teve. Decisão de origem: `5818ee8` (TECH-126, DL-4 da TECH-106), em `tech-product-template@18fd32c`. Executado por TECH-215, sob a TECH-210 |
 
 > Linhas com `—` na coluna Commit registram mudanças cujo commit é o próprio que edita
 > esta tabela: o hash ainda não existe no momento da escrita. `git log -- <arquivo>`
