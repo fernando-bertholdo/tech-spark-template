@@ -47,17 +47,30 @@ Versão lite da skill — sem refs a Roadmap/TODO/`documents/core/`. Restriçõe
 - **Explicar o "porquê":** decisões técnicas, trade-offs, alternativas consideradas — registrar em Decisões-chave do `Projeto.md`.
 - **Validar contra requisitos:** testar com dados reais quando possível.
 
+### Horas e datas
+
+**Fuso do dono:** `America/Sao_Paulo`, rótulo `BRT`. Projeto cujo dono vive em outro fuso troca esta linha no kickoff, e só ela.
+
+- **Texto para gente** (resposta, handoff, `Projeto.md`, changelog): a hora sai de `TZ=<fuso do dono> date '+%d/%m/%Y %H:%M %z'`, medida logo antes de escrever, com o rótulo: `18:41 BRT`. O `%z` confere a zona.
+- **Hora que vai ser cruzada com carimbo de API** (GitHub, git), que vem em UTC: o UTC vai ao lado, `18:41 BRT (21:41Z)`, com a data dia/mês quando ele cai em outro dia.
+- **Carimbo de máquina** (log, JSON, nome de arquivo gerado): UTC com `Z`.
+- **Segundos** só entram copiados de um carimbo de máquina, com a zona dele. **Hora sem zona é defeito.**
+
 ---
 
-## 5. Segurança
+## 5. Segurança e fidelidade de dados
 
-**Regra de ouro:** NUNCA commitar secrets.
+Dois casos opostos, não graus do mesmo caso:
+
+**Segredo** (credencial, token, chave, senha): NUNCA commitar, sem exceção. Num repositório privado ele continua sendo risco, porque quem obtém o repositório ganha a capacidade de agir.
 
 Checklist mínimo:
 - [ ] Sem secrets hardcoded
 - [ ] `.env` no `.gitignore`
 - [ ] `.env.example` sanitizado
 - [ ] Logs não expõem credenciais
+
+**Dado de trabalho** (o registro, documento ou medição que o projeto processa): viaja exatamente como medido, rastreável à fonte. Arredondar, parafrasear, redigir ou trocar por equivalente quebra a conferência sem avisar quem lê depois; transformação necessária é declarada, com o caminho de volta ao valor de origem. Quem detém o dado e sob que autorização vai em Decisões-chave do `Projeto.md`; sem esse registro, trate dado de terceiro com cautela e registre a lacuna.
 
 Ver [.claude/rules/security.md](../.claude/rules/security.md) para detalhes.
 
