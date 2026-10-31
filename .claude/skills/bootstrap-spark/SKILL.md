@@ -154,8 +154,10 @@ Lista completa — se aparecer qualquer outro `{{...}}` nos arquivos após boots
 | `{{PROJECT_DESCRIPTION}}` | `README.md` | Resposta "o que esse projeto faz" (greenfield Q1) ou `PROJECT_DESCRIPTION:` no modo ready ou flag `--description` |
 | `{{AUTHOR_NAME}}` | `README.md`, `.claude/CLAUDE.md`, `.agents/README.md` | `git config user.name` (auto). Se vazio, perguntar |
 | `{{AUTHOR_EMAIL}}` | `README.md` | `git config user.email` (auto). Se vazio, perguntar |
-| `{{DATE}}` | `Projeto.md`, `.claude/CLAUDE.md`, `.agents/README.md` | Data ISO 8601 do calendário do fuso do dono (§4 do ponto de entrada): `TZ=America/Sao_Paulo date +%Y-%m-%d`, trocando o fuso se o dono vive em outro |
+| `{{DATE}}` | `Projeto.md`, `.claude/CLAUDE.md`, `.agents/README.md` | Data ISO 8601 do calendário do fuso do dono (§4 do ponto de entrada): `TZ=<fuso da linha "Fuso do dono"> date +%Y-%m-%d` |
 | `{{COMMIT_SCOPES}}` | `.claude/CLAUDE.md`, `.agents/README.md` | Inferido do Stack — ver tabela abaixo |
+
+**Fuso do dono** (não é placeholder): a §4 dos dois pontos de entrada vem com `America/Sao_Paulo`, rótulo `BRT`. Se o dono vive em outro fuso, pergunte qual e troque essa linha nos dois pontos de entrada, com o mesmo valor; o `{{DATE}}` sai desse fuso.
 
 ### Inferência de `{{COMMIT_SCOPES}}`
 
@@ -319,5 +321,5 @@ bootstrap-spark --resume
 
 ---
 
-**Versão:** 1.0.0
-**Última atualização:** 2026-05-19
+**Versão:** 1.1.0
+**Última atualização:** 2026-10-31 (o `{{DATE}}` e o fuso do dono, TECH-1308)

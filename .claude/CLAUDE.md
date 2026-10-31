@@ -70,7 +70,7 @@ Checklist mínimo:
 - [ ] `.env.example` sanitizado
 - [ ] Logs não expõem credenciais
 
-**Dado de trabalho** (o registro, documento ou medição que o projeto processa): viaja exatamente como medido, rastreável à fonte. Arredondar, parafrasear, redigir ou trocar por equivalente quebra a conferência sem avisar quem lê depois; transformação necessária é declarada, com o caminho de volta ao valor de origem. Quem detém o dado e sob que autorização vai em Decisões-chave do `Projeto.md`; sem esse registro, trate dado de terceiro com cautela e registre a lacuna.
+**Dado de trabalho** (o registro, documento ou medição que o projeto processa): viaja exatamente como medido, rastreável à fonte. Arredondar, parafrasear, redigir ou trocar por equivalente quebra a conferência sem avisar quem lê depois; transformação necessária é declarada, com o caminho de volta ao valor de origem. Quando o projeto processa dado de terceiro, quem detém o dado e sob que autorização vai em Decisões-chave do `Projeto.md`; sem esse registro, trate dado de terceiro com cautela e registre a lacuna.
 
 Ver [rules/security.md](rules/security.md) para detalhes path-targeted.
 

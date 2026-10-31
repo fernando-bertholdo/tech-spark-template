@@ -1,6 +1,6 @@
 ---
 name: generate-session-prompt
-version: 1.0.0
+version: 1.1.0
 description: Gerar prompt para retomada de desenvolvimento em nova sessão. Use ao retomar trabalho após pausa, ao trocar de ferramenta (ex: Cursor → Claude Code), em mudança de contexto, ou quando sessão atual passou de ~150k tokens. Aceita argumento de detalhe (brief, standard, detailed). Modo genérico — funciona em qualquer projeto, sem framework opinionado.
 ---
 
@@ -162,6 +162,10 @@ Lista final consolidada de tarefas referenciando as seções acima.
 ---
 
 ## Changelog
+
+### v1.1.0 (31/10/2026)
+
+- A coleta lê a issue do trabalho quando há rastreador (TECH-1308)
 
 ### v1.0.0 (Maio/2026)
 

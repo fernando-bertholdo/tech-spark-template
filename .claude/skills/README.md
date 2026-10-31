@@ -75,6 +75,7 @@ mudam juntos por disciplina, e o literal que um `trecho` declara.
 | 2026-10-31 | — | — | `pre-commit-check/SKILL.md` | As Referências apontam `.claude/rules/code-quality.md` e `security.md`, em vez de três rules com nomes do template completo que este não tem. Achado do porte, sem par na origem. TECH-1308 |
 | 2026-10-31 | — | — | `README.md` | "Duas camadas" diz que as rules vivem só em `.claude/rules/` e que o par `divergencia` é comparado fora do `trecho` declarado. Origem: TECH-852 e TECH-698 do `tech-product-template`, sem Sync-ID lá. TECH-1308 |
 | 2026-10-31 | — | — | `bootstrap-spark/SKILL.md` | O `{{DATE}}` sai do calendário do fuso do dono (`TZ=… date`), como pede a nova §4 do ponto de entrada. TECH-1308 |
+| 2026-10-31 | — | — | `bootstrap-spark/SKILL.md`, `pre-commit-check/SKILL.md`, `generate-session-prompt/SKILL.md` | Aparas da revisão do PR #10: o kickoff troca a linha do fuso do dono e tira dela o `{{DATE}}`; a varredura da seção 6 não acusa chave de issue nem nome de arquivo e entra no Checklist Rápido; `bootstrap-spark` e `generate-session-prompt` sobem para 1.1.0. TECH-1308 |
 
 > Linhas com `—` na coluna Commit registram mudanças cujo commit é o próprio que edita
 > esta tabela: o hash ainda não existe no momento da escrita. `git log -- <arquivo>`

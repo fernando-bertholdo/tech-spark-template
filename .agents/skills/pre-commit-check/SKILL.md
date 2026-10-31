@@ -119,7 +119,7 @@ commitar, varra a mensagem planejada:
 
 ```bash
 printf '%s\n' "$MSG" | grep -nEi '\b(nenhum|nenhuma|todas|todos|cada|sempre|nunca|únic[oa]|em ordem)\b'
-printf '%s\n' "$MSG" | grep -vE '`|§|#[0-9]+|\b(19|20)[0-9]{2}\b|https?://' | grep -nE '\b[0-9]+\b'
+printf '%s\n' "$MSG" | grep -vE '`|§|#[0-9]+|\b[A-Z]+-[0-9]+\b|\.(md|sh|py|json|ya?ml)\b|\b(19|20)[0-9]{2}\b|https?://' | grep -nE '\b[0-9]+\b'
 ```
 
 Cada linha que volta é hipótese: fica se a fonte (comando, arquivo, issue, PR) está na
@@ -203,6 +203,7 @@ READY TO COMMIT
 - [ ] Arquivos staged conferem
 - [ ] Pareamento `.claude/` × `.agents/` íntegro (`bash scripts/validate/check-pareamento-instrucoes.sh`, rodado em todo commit)
 - [ ] Mensagem em formato conventional (pt-BR)
+- [ ] Quantificador e número com a fonte ao lado (seção 6)
 
 ## Referências
 

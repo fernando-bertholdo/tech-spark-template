@@ -21,6 +21,11 @@
 # reconcilia o par ou apaga o arquivo. Motivo genérico ("exclusivo", "difere") não
 # vale — o motivo é o que torna a exceção auditável.
 #
+# O cabeçalho do gate é o da origem, byte a byte: o harness, os cenários P33 e
+# P35, a `.codex/` e as medições que ele cita existem no tech-product-template, não
+# aqui. Mudar o script é mudar a cópia da origem; o que vale para este repositório
+# está neste arquivo.
+#
 # Alcance: só skills/. Desde 31/10/2026 (TECH-1308) as rules vivem só em
 # .claude/rules/, como no tech-product-template desde a TECH-852, e os pontos de
 # entrada (.claude/CLAUDE.md e .agents/README.md) ficam fora do gate.
