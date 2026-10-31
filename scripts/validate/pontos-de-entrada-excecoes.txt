@@ -1,0 +1,24 @@
+# Diferenças declaradas entre .claude/CLAUDE.md e .agents/README.md.
+# Lido por scripts/validate/check-pontos-de-entrada.sh. Cada linha:
+#   <.claude ou .agents> | <literal que sai daquele lado antes da comparação>
+# O resto dos dois arquivos tem de ser igual, linha a linha.
+
+# Título: cada camada se nomeia.
+.claude | # Claude Code - Regras do Projeto
+.agents | # .agents/ — Regras do Projeto
+
+# Onde estão as rules e as skills, visto de cada camada.
+.claude | Regras path-targeted em `.claude/rules/`. Skills em `.claude/skills/`.
+.agents | Regras técnicas em `.claude/rules/`, cópia única lida também por quem entra por esta camada: consulte a rule antes de editar os caminhos que ela declara. Skills em `.agents/skills/`.
+
+# Nome de ferramenta que só o Claude Code tem.
+.claude | dispatch para subagente via Task tool
+.agents | dispatch para subagente
+
+# Links para as rules: o .claude/ resolve rules/ ao lado; o .agents/ sobe até .claude/rules/.
+.claude | Ver [rules/security.md](rules/security.md) para detalhes path-targeted.
+.agents | Ver [.claude/rules/security.md](../.claude/rules/security.md) para detalhes.
+.claude | - [rules/code-quality.md](rules/code-quality.md) — path-targeted (src/**/*, *.py)
+.agents | - [.claude/rules/code-quality.md](../.claude/rules/code-quality.md) — código-fonte (src/**/*, *.py)
+.claude | - [rules/security.md](rules/security.md) — path-targeted (src/**/*, .env*)
+.agents | - [.claude/rules/security.md](../.claude/rules/security.md) — código-fonte e segredos (src/**/*, .env*)

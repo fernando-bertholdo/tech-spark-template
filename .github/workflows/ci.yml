@@ -26,6 +26,9 @@ jobs:
       - name: Pareamento .agents/ × .claude/
         run: bash scripts/validate/check-pareamento-instrucoes.sh
 
+      - name: Pontos de entrada .claude/CLAUDE.md × .agents/README.md
+        run: bash scripts/validate/check-pontos-de-entrada.sh
+
       # Os passos abaixo só rodam quando o stack correspondente existir no repo.
       #
       # Python: pede o manifesto e também um arquivo de teste com os nomes que o
@@ -35,13 +38,27 @@ jobs:
       # `pip` não é mais silenciado: o `2>/dev/null ||` antigo escondia o erro de
       # instalação e caía para um `requirements.txt` que podia não existir.
       # Portado do tech-product-template (TECH-847).
+      #
+      # Com `uv.lock` na raiz o projeto é gerido pelo uv, e as ferramentas de
+      # desenvolvimento costumam estar em `[dependency-groups]` (PEP 735), que
+      # `pip install -e ".[dev]"` não instala: o passo vai pelo `uv sync --locked`
+      # (TECH-1311; medido no vai-facil, TECH-1309). Sem `uv.lock`, segue o pip.
+      - uses: astral-sh/setup-uv@v6
+        if: ${{ hashFiles('uv.lock') != '' && hashFiles('**/test_*.py', '**/*_test.py') != '' }}
+
+      - name: Testes Python (uv)
+        if: ${{ hashFiles('uv.lock') != '' && hashFiles('**/test_*.py', '**/*_test.py') != '' }}
+        run: |
+          uv sync --locked
+          uv run pytest -q
+
       - uses: actions/setup-python@v5
-        if: ${{ hashFiles('pyproject.toml', 'requirements.txt', 'requirements-dev.txt') != '' && hashFiles('**/test_*.py', '**/*_test.py') != '' }}
+        if: ${{ hashFiles('uv.lock') == '' && hashFiles('pyproject.toml', 'requirements.txt', 'requirements-dev.txt') != '' && hashFiles('**/test_*.py', '**/*_test.py') != '' }}
         with:
           python-version: "3.12"
 
-      - name: Testes Python
-        if: ${{ hashFiles('pyproject.toml', 'requirements.txt', 'requirements-dev.txt') != '' && hashFiles('**/test_*.py', '**/*_test.py') != '' }}
+      - name: Testes Python (pip)
+        if: ${{ hashFiles('uv.lock') == '' && hashFiles('pyproject.toml', 'requirements.txt', 'requirements-dev.txt') != '' && hashFiles('**/test_*.py', '**/*_test.py') != '' }}
         run: |
           if [ -f setup.py ] || grep -qE '^\[(project|build-system)(\]|\.)' pyproject.toml 2>/dev/null; then
             pip install -e ".[dev]"

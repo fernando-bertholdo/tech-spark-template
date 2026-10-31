@@ -53,8 +53,10 @@ sempre com motivo.
 **Consequência prática ao editar:** as duas camadas mudam no mesmo commit. Um par
 declarado `divergencia` não sai da comparação: só sai o que as linhas `trecho` e `secao`
 dele declaram, e o resto é comparado byte a byte. Alterar uma camada e esquecer a outra
-fora desses trechos reprova o gate. Ficam fora do gate os dois pontos de entrada, que
-mudam juntos por disciplina, e o literal que um `trecho` declara.
+fora desses trechos reprova o gate. Os dois pontos de entrada têm gate próprio,
+`scripts/validate/check-pontos-de-entrada.sh`, com as diferenças declaradas em
+`scripts/validate/pontos-de-entrada-excecoes.txt`; fica fora de comparação só o literal
+que uma exceção declara.
 
 ## Changelog Local
 
@@ -79,6 +81,7 @@ mudam juntos por disciplina, e o literal que um `trecho` declara.
 | 2026-10-31 | — | — | `README.md` | "Duas camadas" diz que as rules vivem só em `.claude/rules/` e que o par `divergencia` é comparado fora do `trecho` declarado. Origem: TECH-852 e TECH-698 do `tech-product-template`, sem Sync-ID lá. TECH-1308 |
 | 2026-10-31 | — | — | `bootstrap-spark/SKILL.md` | O `{{DATE}}` sai do calendário do fuso do dono (`TZ=… date`), como pede a nova §4 do ponto de entrada. TECH-1308 |
 | 2026-10-31 | — | — | `bootstrap-spark/SKILL.md`, `pre-commit-check/SKILL.md`, `generate-session-prompt/SKILL.md` | Aparas da revisão do PR #10: o kickoff troca a linha do fuso do dono e tira dela o `{{DATE}}`; a varredura da seção 6 não acusa chave de issue nem nome de arquivo e entra no Checklist Rápido; `bootstrap-spark` e `generate-session-prompt` sobem para 1.1.0. TECH-1308 |
+| 2026-10-31 | — | — | `pre-commit-check/SKILL.md`, `README.md` | O `pre-commit-check` roda o gate novo dos pontos de entrada e o tem como bloqueador; "Duas camadas" diz que eles deixaram de depender só de disciplina. TECH-1311 |
 
 > Linhas com `—` na coluna Commit registram mudanças cujo commit é o próprio que edita
 > esta tabela: o hash ainda não existe no momento da escrita. `git log -- <arquivo>`
