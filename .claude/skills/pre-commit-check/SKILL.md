@@ -153,6 +153,8 @@ hook e sem a varredura de diff, da seção 7 do `pre-commit-check` do `tech-prod
      com mudança parcialmente staged ele valida algo diferente do que vai no commit.
      Se sobrou edição não staged em `.claude/`, `.agents/` ou nas exceções, o verde
      dele não fala do commit — resolva o stage parcial antes de confiar no resultado
+   - Rodar `bash scripts/validate/check-pontos-de-entrada.sh` — os dois pontos de
+     entrada dizem o mesmo fora do que `pontos-de-entrada-excecoes.txt` declara; se FAIL, BLOQUEAR
 
 5. Mensagem
    - Validar formato conventional commit em pt-BR
@@ -184,6 +186,7 @@ READY TO COMMIT
 - `.env` ou credenciais staged
 - Testes existentes falhando
 - Gate de pareamento reprovando — ele roda incondicionalmente, inclusive num commit que só mexe em `scripts/validate/`
+- Gate dos pontos de entrada reprovando (`.claude/CLAUDE.md` × `.agents/README.md`)
 
 ## Avisos (revisar, não bloqueia)
 
