@@ -2,7 +2,7 @@
 
 Regras operacionais sempre ativas para `{{PROJECT_NAME}}` (baseado em `tech-spark-template`).
 
-> **Single source of truth:** [Projeto.md](../Projeto.md) na raiz. Regras técnicas em `.agents/rules/`. Skills em `.agents/skills/`.
+> **Single source of truth:** [Projeto.md](../Projeto.md) na raiz. Regras técnicas em `.claude/rules/`, cópia única lida também por quem entra por esta camada: consulte a rule antes de editar os caminhos que ela declara. Skills em `.agents/skills/`.
 
 ---
 
@@ -59,7 +59,7 @@ Checklist mínimo:
 - [ ] `.env.example` sanitizado
 - [ ] Logs não expõem credenciais
 
-Ver [rules/security.md](rules/security.md) para detalhes.
+Ver [.claude/rules/security.md](../.claude/rules/security.md) para detalhes.
 
 ---
 
@@ -89,8 +89,8 @@ Ver [rules/security.md](rules/security.md) para detalhes.
 
 - [Projeto.md](../Projeto.md) — single source of truth
 - [FUTURE_WORK.md](../FUTURE_WORK.md) — Promotion Path e direções futuras
-- [rules/code-quality.md](rules/code-quality.md) — código-fonte (src/**/*, *.py)
-- [rules/security.md](rules/security.md) — código-fonte e segredos (src/**/*, .env*)
+- [.claude/rules/code-quality.md](../.claude/rules/code-quality.md) — código-fonte (src/**/*, *.py)
+- [.claude/rules/security.md](../.claude/rules/security.md) — código-fonte e segredos (src/**/*, .env*)
 - [skills/README.md](skills/README.md) — índice das 8 skills
 
 ---

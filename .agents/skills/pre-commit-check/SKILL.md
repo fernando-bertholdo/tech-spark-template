@@ -189,7 +189,7 @@ READY TO COMMIT
 
 ## Referências
 
-- `@rules/code-quality-standards.md` — padrões de qualidade
-- `@rules/security-best-practices.md` — práticas de segurança
-- `@rules/testing-requirements.md` — requisitos de testes
+- `.claude/rules/code-quality.md` — padrões de qualidade
+- `.claude/rules/security.md` — segredo e dado de trabalho
+- skill `validate-testing` — cobertura de testes, opt-in
 - `Projeto.md` (raiz) — stack e comandos oficiais do projeto

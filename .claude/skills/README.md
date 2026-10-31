@@ -37,27 +37,24 @@
 
 ## Duas camadas de instrução
 
-Desde 2026-08-31 este template mantém `.claude/` e `.agents/` **pareados**: as 8
-skills, as 2 rules e o índice de cada diretório existem nas duas camadas, para os
-harnesses que leem `.agents/` em vez de `.claude/`. O ponto de entrada é o par
-`.claude/CLAUDE.md` ↔ `.agents/README.md` — mesmo papel, nomes que cada harness impõe.
+Desde 2026-08-31 este template mantém as skills de `.claude/` e `.agents/` **pareadas**:
+as 8 skills e o índice delas existem nas duas camadas, para os harnesses que leem
+`.agents/` em vez de `.claude/`. O ponto de entrada é o par `.claude/CLAUDE.md` ↔
+`.agents/README.md` — mesmo papel, nomes que cada harness impõe. As 2 rules vivem só em
+`.claude/rules/` desde 2026-10-31: a cópia em `.agents/rules/` não tinha leitor
+automático, e o ponto de entrada da camada `.agents/` aponta para a cópia única.
 
 O pareamento é um invariante, não um instantâneo: `scripts/validate/check-pareamento-instrucoes.sh`
 roda em CI e falha se um homônimo divergir sem declaração, se um arquivo existir só
-numa camada sem declaração, ou se uma declaração ficar obsoleta. Divergência legítima
-vive em `scripts/validate/pareamento-instrucoes-excecoes.txt`, sempre com motivo.
+numa camada sem declaração, se uma declaração ficar obsoleta, ou se um arquivo voltar a
+`.agents/rules/`. Divergência legítima vive em `scripts/validate/pareamento-instrucoes-excecoes.txt`,
+sempre com motivo.
 
-**Consequência prática ao editar:** as duas camadas mudam no mesmo commit — essa é a
-disciplina, e o gate cobre só parte dela. O que ele barra é homônimo divergente **não
-declarado** e arquivo solo **não declarado**; todo par já declarado `divergencia` e os
-dois pontos de entrada, declarados `solo`, ficam fora da comparação byte a byte. Neles,
-alterar uma camada e esquecer a outra passa em silêncio, e é a lista versionada em
-`scripts/validate/pareamento-instrucoes-excecoes.txt` que torna essa cegueira auditável:
-uma linha por exceção, sempre com motivo, e exceção obsoleta reprovando igual a drift.
-Quantos pares estão nessa condição, a lista diz — e o gate imprime o total de exceções em
-uso a cada execução. Nos pares restantes a comparação é byte a byte — e é dela que vem o
-freio ao drift que se acumulou no `tech-product-template`, onde 19 pares divergiram em
-seis meses sem ninguém notar.
+**Consequência prática ao editar:** as duas camadas mudam no mesmo commit. Um par
+declarado `divergencia` não sai da comparação: só sai o que as linhas `trecho` e `secao`
+dele declaram, e o resto é comparado byte a byte. Alterar uma camada e esquecer a outra
+fora desses trechos reprova o gate. Ficam fora do gate os dois pontos de entrada, que
+mudam juntos por disciplina, e o literal que um `trecho` declara.
 
 ## Changelog Local
 
