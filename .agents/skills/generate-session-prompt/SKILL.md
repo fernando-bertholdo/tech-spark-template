@@ -66,6 +66,8 @@ Se existir `Projeto.md` na **raiz do projeto**, trate-o como fonte primária de 
    - git log --oneline -10  (narrativa recente)
    - git status              (mudanças pendentes)
    - git diff HEAD --stat    (escopo do diff)
+   - Se o trabalho tem issue num rastreador: descrição, checkboxes e comentários
+     de topo — decisão que vive só na thread não chega ao prompt por arquivo nenhum
    - Arquivos modificados nas últimas 48h:
      find . -type f -mtime -2 -not -path './.git/*' \
        -not -path './node_modules/*' -not -path './dist/*' 2>/dev/null | head -20

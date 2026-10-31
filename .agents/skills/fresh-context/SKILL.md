@@ -55,6 +55,8 @@ O CONTEXT.md deve ser **curto** (alvo: ~200–500 tokens). Ele **não duplica** 
    - Arquivos importantes tocados ou em foco
    - Decisões já tomadas que NÃO devem ser re-debatidas
    - Perguntas/dúvidas em aberto
+   - Se o trabalho tem issue num rastreador: descrição, checkboxes e comentários
+     de topo — decisão que vive só na thread não chega ao handoff por arquivo nenhum
 
 3. Preencher o template (ver abaixo) — seja conciso.
 

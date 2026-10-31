@@ -116,6 +116,7 @@ Commits atômicos permitem:
 - Sem ponto final
 - Descrever O QUE (não "porquê")
 - Sempre em português do Brasil (`pt-BR`)
+- Sem quantificador solto (`nenhum`, `todos`, `sempre`) nem número sem a fonte ao lado: a varredura está na seção 6 do `pre-commit-check`
 
 ### Body (Opcional, recomendado)
 
