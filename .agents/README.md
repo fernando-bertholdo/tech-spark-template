@@ -108,9 +108,13 @@ Ver [.claude/rules/security.md](../.claude/rules/security.md) para detalhes.
 
 ---
 
-**Versão:** 1.1.0
+**Versão:** 1.2.0
 **Última atualização:** {{DATE}}
 **Autor:** {{AUTHOR_NAME}}
+
+**Changelog v1.2.0 (31/10/2026, TECH-1311):**
+- CI: com `uv.lock`, os testes Python vão pelo `uv sync --locked`, que instala `[dependency-groups]`; sem ele, segue o pip
+- Gate novo `check-pontos-de-entrada.sh`: `.claude/CLAUDE.md` e `.agents/README.md` dizem o mesmo fora das diferenças declaradas
 
 **Changelog v1.1.0 (31/10/2026, porte neutro de classe do `tech-product-template@06cee39`, 2.21.1; TECH-1308):**
 - §4 ganha "Horas e datas", com o fuso do dono numa linha que o kickoff troca
