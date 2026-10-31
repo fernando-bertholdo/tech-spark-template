@@ -154,7 +154,7 @@ Lista completa — se aparecer qualquer outro `{{...}}` nos arquivos após boots
 | `{{PROJECT_DESCRIPTION}}` | `README.md` | Resposta "o que esse projeto faz" (greenfield Q1) ou `PROJECT_DESCRIPTION:` no modo ready ou flag `--description` |
 | `{{AUTHOR_NAME}}` | `README.md`, `.claude/CLAUDE.md`, `.agents/README.md` | `git config user.name` (auto). Se vazio, perguntar |
 | `{{AUTHOR_EMAIL}}` | `README.md` | `git config user.email` (auto). Se vazio, perguntar |
-| `{{DATE}}` | `Projeto.md`, `.claude/CLAUDE.md`, `.agents/README.md` | Data ISO 8601 atual: `date +%Y-%m-%d` |
+| `{{DATE}}` | `Projeto.md`, `.claude/CLAUDE.md`, `.agents/README.md` | Data ISO 8601 do calendário do fuso do dono (§4 do ponto de entrada): `TZ=America/Sao_Paulo date +%Y-%m-%d`, trocando o fuso se o dono vive em outro |
 | `{{COMMIT_SCOPES}}` | `.claude/CLAUDE.md`, `.agents/README.md` | Inferido do Stack — ver tabela abaixo |
 
 ### Inferência de `{{COMMIT_SCOPES}}`
@@ -219,7 +219,7 @@ Ao final, os 4 arquivos abaixo ficam **sem placeholders**:
    - PROJECT_NAME (basename do diretório, se não fornecido)
    - AUTHOR_NAME via `git config user.name`
    - AUTHOR_EMAIL via `git config user.email`
-   - DATE via `date +%Y-%m-%d`
+   - DATE via `TZ=<fuso do dono> date +%Y-%m-%d`
    - COMMIT_SCOPES via inferência da Stack
 6. Confirmar preview com o usuário (skip em --non-interactive)
 7. Substituir placeholders nos 4 arquivos (sed/edit, em ordem):

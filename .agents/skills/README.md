@@ -73,6 +73,11 @@ mudam juntos por disciplina, e o literal que um `trecho` declara.
 | 2026-08-31 | — | SYNC-20260831-001 | `README.md` | Troca a contagem fixa de pares dentro e fora da comparação byte a byte por descrição qualitativa: o número decaía em silêncio a cada exceção adicionada ou removida, sem gate que o validasse |
 | 2026-08-31 | — | SYNC-20260831-001 | `pre-commit-check/SKILL.md` | Anota que o gate compara a árvore de trabalho, não o índice: com stage parcial ele valida algo diferente do que vai no commit |
 | 2026-09-12 | — | SYNC-20260830-002 | `generate-session-prompt/SKILL.md`, `agent-team/SKILL.md` | Espelha do `.claude/` a saída das duas citações órfãs ao arquivo de tarefas granulares que a origem aposentou — mesma linha nos dois arquivos, e o delta é byte a byte o da outra camada. Executado por TECH-215, sob a TECH-210 |
+| 2026-10-31 | — | SYNC-20260920-001/002 | `pre-commit-check/SKILL.md`, `organize-commits/SKILL.md` | Seção 6 do `pre-commit-check`: varredura de quantificador e número sem fonte na mensagem, como aviso, sem o hook nem a varredura de diff da origem; `organize-commits` aponta para ela. TECH-1308 |
+| 2026-10-31 | — | SYNC-20260920-001/002 | `fresh-context/SKILL.md`, `generate-session-prompt/SKILL.md` | A coleta lê a issue do trabalho quando há rastreador: descrição, checkboxes e comentários de topo. TECH-1308 |
+| 2026-10-31 | — | — | `pre-commit-check/SKILL.md` | As Referências apontam `.claude/rules/code-quality.md` e `security.md`, em vez de três rules com nomes do template completo que este não tem. Achado do porte, sem par na origem. TECH-1308 |
+| 2026-10-31 | — | — | `README.md` | "Duas camadas" diz que as rules vivem só em `.claude/rules/` e que o par `divergencia` é comparado fora do `trecho` declarado. Origem: TECH-852 e TECH-698 do `tech-product-template`, sem Sync-ID lá. TECH-1308 |
+| 2026-10-31 | — | — | `bootstrap-spark/SKILL.md` | O `{{DATE}}` sai do calendário do fuso do dono (`TZ=… date`), como pede a nova §4 do ponto de entrada. TECH-1308 |
 
 > Linhas com `—` na coluna Commit registram mudanças cujo commit é o próprio que edita
 > esta tabela: o hash ainda não existe no momento da escrita. `git log -- <arquivo>`

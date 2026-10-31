@@ -108,6 +108,14 @@ Ver [.claude/rules/security.md](../.claude/rules/security.md) para detalhes.
 
 ---
 
-**Versão:** 1.0.0
+**Versão:** 1.1.0
 **Última atualização:** {{DATE}}
 **Autor:** {{AUTHOR_NAME}}
+
+**Changelog v1.1.0 (31/10/2026, porte neutro de classe do `tech-product-template@06cee39`, 2.21.1; TECH-1308):**
+- §4 ganha "Horas e datas", com o fuso do dono numa linha que o kickoff troca
+- §5 separa segredo (nunca entra) de dado de trabalho (viaja exato, com a base declarada em Decisões-chave)
+- As rules vivem só em `.claude/rules/`; o gate de pareamento compara o par `divergencia` fora do `trecho` declarado
+- CI: invariantes reprovam por linha; testes Python pulam sem teste e não escondem o `pip`
+- Skills: o handoff lê a issue do rastreador; a mensagem de commit é varrida por quantificador e número sem fonte
+- Não entram, por não serem spark: registro de horizontes, hooks, processo de iniciativa, `AGENTS.md` e `.codex/`
