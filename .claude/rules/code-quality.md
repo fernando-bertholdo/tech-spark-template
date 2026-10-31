@@ -47,7 +47,7 @@ Sem magic numbers. Exceções óbvias: `0`, `1`, `-1`, `100` em conversões perc
 - Todo módulo: `logger = logging.getLogger(__name__)` (ou equivalente do stack)
 - Configurar logging uma vez no entrypoint
 - Logar: início/fim de operações importantes, contagens, status de chamadas externas (sem payload sensível)
-- Nunca logar: tokens, senhas, cookies, headers sensíveis, PII
+- Nunca logar segredo: tokens, senhas, cookies, headers de autorização. Dado de trabalho, inclusive dado pessoal de terceiro, segue a §5 do ponto de entrada e a `security.md`
 
 ## Secrets
 

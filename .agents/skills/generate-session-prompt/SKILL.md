@@ -1,6 +1,6 @@
 ---
 name: generate-session-prompt
-version: 1.0.0
+version: 1.1.0
 description: Gerar prompt para retomada de desenvolvimento em nova sessão. Use ao retomar trabalho após pausa, ao trocar de ferramenta (ex: Cursor → Claude Code), em mudança de contexto, ou quando sessão atual passou de ~150k tokens. Aceita argumento de detalhe (brief, standard, detailed). Modo genérico — funciona em qualquer projeto, sem framework opinionado.
 ---
 
@@ -66,6 +66,8 @@ Se existir `Projeto.md` na **raiz do projeto**, trate-o como fonte primária de 
    - git log --oneline -10  (narrativa recente)
    - git status              (mudanças pendentes)
    - git diff HEAD --stat    (escopo do diff)
+   - Se o trabalho tem issue num rastreador: descrição, checkboxes e comentários
+     de topo — decisão que vive só na thread não chega ao prompt por arquivo nenhum
    - Arquivos modificados nas últimas 48h:
      find . -type f -mtime -2 -not -path './.git/*' \
        -not -path './node_modules/*' -not -path './dist/*' 2>/dev/null | head -20
@@ -160,6 +162,10 @@ Lista final consolidada de tarefas referenciando as seções acima.
 ---
 
 ## Changelog
+
+### v1.1.0 (31/10/2026)
+
+- A coleta lê a issue do trabalho quando há rastreador (TECH-1308)
 
 ### v1.0.0 (Maio/2026)
 

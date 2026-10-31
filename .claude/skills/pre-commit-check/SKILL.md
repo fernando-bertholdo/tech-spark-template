@@ -111,6 +111,21 @@ docs: atualiza README com instruções de setup
 test(parser): cobre caso de input vazio
 ```
 
+### 6. Quantificador e número órfão na mensagem (aviso)
+
+Afirmação totalizadora ("nenhum", "todos", "sempre") e número sem fonte numa mensagem de
+commit ou num corpo de PR viram fato para quem lê depois, e ninguém confere. Antes de
+commitar, varra a mensagem planejada:
+
+```bash
+printf '%s\n' "$MSG" | grep -nEi '\b(nenhum|nenhuma|todas|todos|cada|sempre|nunca|únic[oa]|em ordem)\b'
+printf '%s\n' "$MSG" | grep -vE '`|§|#[0-9]+|\b[A-Z]+-[0-9]+\b|\.(md|sh|py|json|ya?ml)\b|\b(19|20)[0-9]{2}\b|https?://' | grep -nE '\b[0-9]+\b'
+```
+
+Cada linha que volta é hipótese: fica se a fonte (comando, arquivo, issue, PR) está na
+mesma frase, e sai ou vira "não medido" se não está. É aviso, não bloqueio. Portada, sem o
+hook e sem a varredura de diff, da seção 7 do `pre-commit-check` do `tech-product-template`.
+
 ## Procedimento
 
 ```
@@ -142,6 +157,7 @@ test(parser): cobre caso de input vazio
 5. Mensagem
    - Validar formato conventional commit em pt-BR
    - Planejar `<type>(<scope>): <assunto>`
+   - Varrer a mensagem por quantificador e número sem fonte (seção 6)
 
 6. Relatório: READY ou NOT READY
 ```
@@ -174,6 +190,7 @@ READY TO COMMIT
 - `.env.example` desatualizado
 - Manifesto de dependências (`requirements.txt`, `package-lock.json`, etc.) modificado sem intenção declarada
 - Arquivos não staged que parecem relacionados ao commit atual
+- Quantificador ou número sem fonte na mensagem (seção 6)
 
 ## Checklist Rápido
 
@@ -186,10 +203,11 @@ READY TO COMMIT
 - [ ] Arquivos staged conferem
 - [ ] Pareamento `.claude/` × `.agents/` íntegro (`bash scripts/validate/check-pareamento-instrucoes.sh`, rodado em todo commit)
 - [ ] Mensagem em formato conventional (pt-BR)
+- [ ] Quantificador e número com a fonte ao lado (seção 6)
 
 ## Referências
 
-- `@rules/code-quality-standards.md` — padrões de qualidade
-- `@rules/security-best-practices.md` — práticas de segurança
-- `@rules/testing-requirements.md` — requisitos de testes
+- `.claude/rules/code-quality.md` — padrões de qualidade
+- `.claude/rules/security.md` — segredo e dado de trabalho
+- skill `validate-testing` — cobertura de testes, opt-in
 - `Projeto.md` (raiz) — stack e comandos oficiais do projeto

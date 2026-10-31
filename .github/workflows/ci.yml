@@ -10,26 +10,45 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Invariantes do repositório: valem desde já, com código ou sem
+      # Invariantes do repositório: valem desde já, com código ou sem.
+      # O shell é `bash -e`, que ignora comando negado com `!`: só a última linha
+      # negada decidia o passo, e o marcador de conflito nunca reprovava. A linha do
+      # marcador guarda o código do `grep` e aceita só o 1, "nenhuma ocorrência" (o 2,
+      # erro de leitura, também reprova). A do `.multica/` pergunta ao git por
+      # pathspec. Cada linha reprova sozinha. Portado do tech-product-template
+      # (TECH-842).
       - name: Invariantes do repositório
         run: |
           test -f Projeto.md
-          ! grep -rnE --exclude-dir=.git '^(<{7} |>{7} )' .
-          ! git ls-files | grep -E '^\.multica/'
+          rc=0; grep -rnE --exclude-dir=.git '^(<{7} |>{7} )' . || rc=$?; [ "$rc" -eq 1 ] || exit 1
+          rastreados=$(git ls-files -- .multica/) || exit 1; [ -z "$rastreados" ] || { printf '%s\n' "$rastreados"; exit 1; }
 
       - name: Pareamento .agents/ × .claude/
         run: bash scripts/validate/check-pareamento-instrucoes.sh
 
-      # Os passos abaixo só rodam quando o stack correspondente existir no repo
+      # Os passos abaixo só rodam quando o stack correspondente existir no repo.
+      #
+      # Python: pede o manifesto e também um arquivo de teste com os nomes que o
+      # `pytest` descobre por padrão. Sem teste o passo PULA, porque o `pytest` sai 5
+      # ("no tests ran") numa árvore sem teste, e projeto recém-criado não é falha.
+      # Projeto que customiza `python_files` ajusta os padrões dos dois `if:`. O
+      # `pip` não é mais silenciado: o `2>/dev/null ||` antigo escondia o erro de
+      # instalação e caía para um `requirements.txt` que podia não existir.
+      # Portado do tech-product-template (TECH-847).
       - uses: actions/setup-python@v5
-        if: ${{ hashFiles('pyproject.toml', 'requirements.txt') != '' }}
+        if: ${{ hashFiles('pyproject.toml', 'requirements.txt', 'requirements-dev.txt') != '' && hashFiles('**/test_*.py', '**/*_test.py') != '' }}
         with:
           python-version: "3.12"
 
       - name: Testes Python
-        if: ${{ hashFiles('pyproject.toml', 'requirements.txt') != '' }}
+        if: ${{ hashFiles('pyproject.toml', 'requirements.txt', 'requirements-dev.txt') != '' && hashFiles('**/test_*.py', '**/*_test.py') != '' }}
         run: |
-          pip install -e ".[dev]" 2>/dev/null || pip install -r requirements.txt
+          if [ -f setup.py ] || grep -qE '^\[(project|build-system)(\]|\.)' pyproject.toml 2>/dev/null; then
+            pip install -e ".[dev]"
+          fi
+          for req in requirements.txt requirements-dev.txt; do
+            if [ -f "$req" ]; then pip install -r "$req"; fi
+          done
           pytest -q
 
       - name: Testes Node

@@ -10,11 +10,13 @@ Path-targeted: aplica em `src/**/*` e `.env*`. Exemplos em Python; princípios s
 
 ## Regra de ouro
 
-**NUNCA commitar dados sensíveis.** Não negociável:
+**NUNCA commitar segredo** (credencial, token, chave, senha). Não negociável:
 - Nunca hardcodear credentials (senhas, tokens, API keys)
 - Nunca commitar `.env`
 - Nunca expor detalhes internos em mensagens de erro
-- Nunca logar informações sensíveis
+- Nunca logar segredo
+
+O dado de trabalho que o projeto processa não é segredo e segue outra régua: viaja exato, rastreável à fonte (ver §5 do ponto de entrada). Mascarar é técnica para segredo, não para dado de trabalho.
 
 ## Secrets via env vars
 
@@ -50,7 +52,7 @@ except Exception as e:
 
 - Mascarar secrets antes de logar (`logger.info(f"Password: {'*'*8}")`)
 - Headers de autorização: substituir por `Bearer ***`
-- Não logar payloads brutos que possam conter PII
+- Payload bruto pode carregar segredo (header, token): filtre o segredo. Dado pessoal de terceiro só vai a log com a base declarada em Decisões-chave do `Projeto.md`
 
 ## Validação de inputs
 
@@ -62,7 +64,8 @@ Inputs externos sempre validados (tipo, formato, range). Falhar com erro especí
 - [ ] `.env` no `.gitignore` (verificar)
 - [ ] `.env.example` sanitizado
 - [ ] Error handling não expõe credenciais
-- [ ] Logs não contêm senhas/tokens/PII
+- [ ] Logs não contêm senhas nem tokens
+- [ ] Dado de trabalho exato, ou a transformação declarada
 - [ ] Inputs externos validados
 
 ## Red flags — ação imediata

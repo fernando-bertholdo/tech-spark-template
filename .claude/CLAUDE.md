@@ -47,17 +47,30 @@ Versão lite da skill — sem refs a Roadmap/TODO/`documents/core/`. Restriçõe
 - **Explicar o "porquê":** decisões técnicas, trade-offs, alternativas consideradas — registrar em Decisões-chave do `Projeto.md`.
 - **Validar contra requisitos:** testar com dados reais quando possível.
 
+### Horas e datas
+
+**Fuso do dono:** `America/Sao_Paulo`, rótulo `BRT`. Projeto cujo dono vive em outro fuso troca esta linha no kickoff, e só ela.
+
+- **Texto para gente** (resposta, handoff, `Projeto.md`, changelog): a hora sai de `TZ=<fuso do dono> date '+%d/%m/%Y %H:%M %z'`, medida logo antes de escrever, com o rótulo: `18:41 BRT`. O `%z` confere a zona.
+- **Hora que vai ser cruzada com carimbo de API** (GitHub, git), que vem em UTC: o UTC vai ao lado, `18:41 BRT (21:41Z)`, com a data dia/mês quando ele cai em outro dia.
+- **Carimbo de máquina** (log, JSON, nome de arquivo gerado): UTC com `Z`.
+- **Segundos** só entram copiados de um carimbo de máquina, com a zona dele. **Hora sem zona é defeito.**
+
 ---
 
-## 5. Segurança
+## 5. Segurança e fidelidade de dados
 
-**Regra de ouro:** NUNCA commitar secrets.
+Dois casos opostos, não graus do mesmo caso:
+
+**Segredo** (credencial, token, chave, senha): NUNCA commitar, sem exceção. Num repositório privado ele continua sendo risco, porque quem obtém o repositório ganha a capacidade de agir.
 
 Checklist mínimo:
 - [ ] Sem secrets hardcoded
 - [ ] `.env` no `.gitignore`
 - [ ] `.env.example` sanitizado
 - [ ] Logs não expõem credenciais
+
+**Dado de trabalho** (o registro, documento ou medição que o projeto processa): viaja exatamente como medido, rastreável à fonte. Arredondar, parafrasear, redigir ou trocar por equivalente quebra a conferência sem avisar quem lê depois; transformação necessária é declarada, com o caminho de volta ao valor de origem. Quando o projeto processa dado de terceiro, quem detém o dado e sob que autorização vai em Decisões-chave do `Projeto.md`; sem esse registro, trate dado de terceiro com cautela e registre a lacuna.
 
 Ver [rules/security.md](rules/security.md) para detalhes path-targeted.
 
@@ -95,6 +108,14 @@ Ver [rules/security.md](rules/security.md) para detalhes path-targeted.
 
 ---
 
-**Versão:** 1.0.0
+**Versão:** 1.1.0
 **Última atualização:** {{DATE}}
 **Autor:** {{AUTHOR_NAME}}
+
+**Changelog v1.1.0 (31/10/2026, porte neutro de classe do `tech-product-template@06cee39`, 2.21.1; TECH-1308):**
+- §4 ganha "Horas e datas", com o fuso do dono numa linha que o kickoff troca
+- §5 separa segredo (nunca entra) de dado de trabalho (viaja exato, com a base declarada em Decisões-chave)
+- As rules vivem só em `.claude/rules/`; o gate de pareamento compara o par `divergencia` fora do `trecho` declarado
+- CI: invariantes reprovam por linha; testes Python pulam sem teste e não escondem o `pip`
+- Skills: o handoff lê a issue do rastreador; a mensagem de commit é varrida por quantificador e número sem fonte
+- Não entram, por não serem spark: registro de horizontes, hooks, processo de iniciativa, `AGENTS.md` e `.codex/`
